@@ -7,7 +7,11 @@ const StylexPlugin = require("@stylexjs/webpack-plugin");
 const config = (_: any, argv: any): webpack.Configuration => ({
   entry: "./src/index.tsx",
   output: {
-    path: path.resolve(__dirname, "dist"),
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+  optimization: {
+    splitChunks: { chunks: 'all' },
   },
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
@@ -45,4 +49,4 @@ const config = (_: any, argv: any): webpack.Configuration => ({
   ],
 });
 
-export default config;
+export default config
