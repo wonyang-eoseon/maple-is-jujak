@@ -6,7 +6,6 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --open --hot",
     "build": "rm -rf dist && webpack --mode production && node scripts/import-css.js"
-    
   },
   "keywords": [],
   "author": "",
@@ -14,14 +13,15 @@
   "dependencies": {
     "@stylexjs/stylex": "^0.4.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router": "^6.21.1",
+    "react-router-dom": "^6.21.1"
   },
   "devDependencies": {
     "@babel/core": "^7.23.6",
     "@babel/preset-env": "^7.23.6",
     "@babel/preset-react": "^7.23.3",
     "@babel/preset-typescript": "^7.23.3",
-    "@stylexjs/babel-plugin": "^0.4.1",
     "@stylexjs/webpack-plugin": "^0.4.1",
     "@types/node": "^20.10.5",
     "@types/react": "^18.2.46",
