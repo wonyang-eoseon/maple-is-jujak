@@ -8,7 +8,7 @@ const config = (_: any, argv: any): webpack.Configuration => ({
   entry: "./src/index.tsx",
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'build'),
   },
   optimization: {
     splitChunks: { chunks: 'all' },
