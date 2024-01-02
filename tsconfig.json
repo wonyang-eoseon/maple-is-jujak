@@ -1,12 +1,26 @@
 {
   "compilerOptions": {
-    "target": "es2015",
-    "module": "commonjs",
-    "strict": true,
-    "jsx": "react-jsx",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "baseUrl": ".",
+    "target": "ES2020", // 타입스크립트 파일을 컴파일 했을 때 빌드 디렉토리에 생성되는 자바스크립트의 버전
+    "lib": ["ES2020", "DOM", "DOM.Iterable"], // 타입스크립트 파일을 자바스크립트로 컴파일할 때 포함될 라이브러리의 목록
+    "module": "ESNext", // 생성될 모듈 코드 설정
+    "allowJs": true, // JS 파일 허용
+    "skipLibCheck": true, // 선언 파일 유형 검사 스킵
+    "esModuleInterop": true, // CommonJS 모듈과의 상호 운용성 향상
+    "allowSyntheticDefaultImports": true, // 디폴트 모듈 가져오기 허용
+    "strict": true, // 엄격한 타입 체킹 활성화
+    "forceConsistentCasingInFileNames": true, // 파일명 대소문자 일관성 강제
+    "moduleResolution": "bundler", // 모듈 분석 방법 설정
+    "resolveJsonModule": true, // JSON 모듈 가져오기 허용
+    "isolatedModules": true, // 각 파일을 별도의 모듈로 취급
+    "noEmit": true, // 컴파일 결과를 파일로 출력하지 않음 (Babel 사용 시 유용)
+    "jsx": "react-jsx" 
   },
-  "exclude": ["webpack.config.ts"]
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  },
+  "include": ["src/**/*", "webpack.config.ts"],
+  "exclude": ["node_modules", "public", "build", "scripts"]
 }
