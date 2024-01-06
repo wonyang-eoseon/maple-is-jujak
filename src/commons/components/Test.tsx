@@ -1,13 +1,13 @@
-import stylex from "@stylexjs/stylex";
+import stylex from '@stylexjs/stylex'
 
 const styles = stylex.create({
   root: {
-    color: "green",
+    color: 'green',
   },
-});
+})
 
 function Test() {
-  return <div {...stylex.props(styles.root)}>테스트</div>;
+  return <div {...stylex.props(styles.root)}>테스트</div>
 }
 
-export default Test;
+export default Test
