@@ -1,9 +1,11 @@
 import { useReducer } from 'react'
 import * as stylex from '@stylexjs/stylex'
+
 import { Button } from './ui/Button'
+import { DatePicker } from './ui/DatePicker'
 
 const styles = stylex.create({
-  root: {
+  base: {
     display: 'flex',
     flexDirection: { default: 'row', '@media (max-width: 800px)': 'column' },
     alignItems: { default: 'end', '@media (max-width: 800px)': 'start' },
@@ -13,10 +15,6 @@ const styles = stylex.create({
     display: 'flex',
     alignItems: 'end',
     gap: '8px',
-  },
-  dateWrapper: {
-    display: 'flex',
-    flexDirection: 'column',
   },
 })
 
@@ -77,27 +75,20 @@ const DateFilter = () => {
   }
 
   return (
-    <div {...stylex.props(styles.root)}>
+    <div {...stylex.props(styles.base)}>
       <div {...stylex.props(styles.wrapper)}>
-        <div {...stylex.props(styles.dateWrapper)}>
-          <label htmlFor="start">시작일</label>
-          <input
-            type="date"
-            id="start"
-            value={state.startDate}
-            onChange={handleSetStartDate}
-          />
-        </div>
-        ~
-        <div {...stylex.props(styles.dateWrapper)}>
-          <label htmlFor="end">마지막일</label>
-          <input
-            type="date"
-            id="end"
-            value={state.endDate}
-            onChange={handleSetEndDate}
-          />
-        </div>
+        <DatePicker
+          label="시작일"
+          id="start"
+          value={state.startDate}
+          onChange={handleSetStartDate}
+        />
+        <DatePicker
+          label="마지막일"
+          id="end"
+          value={state.endDate}
+          onChange={handleSetEndDate}
+        />
       </div>
       <div {...stylex.props(styles.wrapper)}>
         <Button onClick={handleSetDurationWeek}>1주일</Button>
