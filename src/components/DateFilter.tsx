@@ -1,5 +1,6 @@
 import { useReducer } from 'react'
 import * as stylex from '@stylexjs/stylex'
+import { Button } from './ui/Button'
 
 const styles = stylex.create({
   root: {
@@ -99,9 +100,9 @@ const DateFilter = () => {
         </div>
       </div>
       <div {...stylex.props(styles.wrapper)}>
-        <button onClick={handleSetDurationWeek}>1주일</button>
-        <button onClick={handleSetDurationMonth}>1개월</button>
-        <button onClick={handleSetDurationYear}>1년</button>
+        <Button onClick={handleSetDurationWeek}>1주일</Button>
+        <Button onClick={handleSetDurationMonth}>1개월</Button>
+        <Button onClick={handleSetDurationYear}>1년</Button>
       </div>
     </div>
   )
