@@ -10,28 +10,22 @@ const styles = stylex.create({
       ':active': 'darkgray',
     },
     color: 'white',
-    borderRadius: 12,
-    paddingBlock: 4,
-    paddingInline: 12,
+    borderRadius: 16,
+    paddingBlock: 4.5,
+    paddingInline: 16,
+    fontSize: 16,
     cursor: 'pointer',
   },
 })
 
-const Button = React.forwardRef<
-  HTMLButtonElement,
-  React.PropsWithChildren<{ onClick: () => void }>
->(({ onClick, children, ...props }, ref) => {
-  return (
-    <button
-      {...stylex.props(styles.base)}
-      onClick={onClick}
-      ref={ref}
-      {...props}
-    >
-      {children}
-    </button>
-  )
-})
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ ...props }, ref) => {
+    return <button {...stylex.props(styles.base)} ref={ref} {...props} />
+  },
+)
 Button.displayName = 'Button'
 
 export { Button }
