@@ -19,55 +19,59 @@ const styles = stylex.create({
   },
 })
 
+const setDateRange = (startDate: Date, endDate: Date) => ({
+  startDate: startDate.toISOString().slice(0, 10),
+  endDate: endDate.toISOString().slice(0, 10),
+})
+
 const reducer = (state: any, action: any) => {
   switch (action.type) {
     case 'SET_START_DATE':
-      return { startDate: action.payload, ...state }
+      return { ...state, startDate: action.payload }
     case 'SET_END_DATE':
-      return { endDate: action.payload, ...state }
+      return { ...state, endDate: action.payload }
     case 'SET_DURATION_WEEK':
-      return {
-        startDate: new Date(new Date().setDate(new Date().getDate() - 7)),
-        endDate: new Date(),
-      }
+      const weekStartDate = new Date(
+        new Date().setDate(new Date().getDate() - 7),
+      )
+      return setDateRange(weekStartDate, new Date())
     case 'SET_DURATION_MONTH':
-      return {
-        startDate: new Date(new Date().setMonth(new Date().getMonth() - 1)),
-        endDate: new Date(),
-      }
+      const monthStartDate = new Date(
+        new Date().setMonth(new Date().getMonth() - 1),
+      )
+      return setDateRange(monthStartDate, new Date())
     case 'SET_DURATION_YEAR':
-      return {
-        startDate: new Date(
-          new Date().setFullYear(new Date().getFullYear() - 1),
-        ),
-        endDate: new Date(),
-      }
+      const yearStartDate = new Date(
+        new Date().setFullYear(new Date().getFullYear() - 1),
+      )
+      return setDateRange(yearStartDate, new Date())
     default:
       return state
   }
 }
 
-const initialState = {
-  startDate: new Date(),
-  endDate: new Date(),
-}
-
-const init = (initialState: any) => {
-  return initialState
-}
+const initialState = setDateRange(new Date(), new Date())
 
 const DateFilter = () => {
-  const [state, dispatch] = useReducer(reducer, initialState, init)
+  const [state, dispatch] = useReducer(reducer, initialState)
 
-  const handleDurationWeek = () => {
+  const handleSetStartDate = (event: any) => {
+    dispatch({ type: 'SET_START_DATE', payload: event.target.value })
+  }
+
+  const handleSetEndDate = (event: any) => {
+    dispatch({ type: 'SET_END_DATE', payload: event.target.value })
+  }
+
+  const handleSetDurationWeek = () => {
     dispatch({ type: 'SET_DURATION_WEEK' })
   }
 
-  const handleDurationMonth = () => {
+  const handleSetDurationMonth = () => {
     dispatch({ type: 'SET_DURATION_MONTH' })
   }
 
-  const handleDurationYear = () => {
+  const handleSetDurationYear = () => {
     dispatch({ type: 'SET_DURATION_YEAR' })
   }
 
@@ -79,13 +83,8 @@ const DateFilter = () => {
           <input
             type="date"
             id="start"
-            value={state.startDate.toISOString().slice(0, 10)}
-            onChange={(event) => {
-              dispatch({
-                type: 'SET_START_DATE',
-                payload: event.target.value,
-              })
-            }}
+            value={state.startDate}
+            onChange={handleSetStartDate}
           />
         </div>
         ~
@@ -94,17 +93,15 @@ const DateFilter = () => {
           <input
             type="date"
             id="end"
-            value={state.endDate.toISOString().slice(0, 10)}
-            onChange={(event) => {
-              dispatch({ type: 'SET_END_DATE', payload: event.target.value })
-            }}
+            value={state.endDate}
+            onChange={handleSetEndDate}
           />
         </div>
       </div>
       <div {...stylex.props(styles.wrapper)}>
-        <button onClick={handleDurationWeek}>1주일</button>
-        <button onClick={handleDurationMonth}>1개월</button>
-        <button onClick={handleDurationYear}>1년</button>
+        <button onClick={handleSetDurationWeek}>1주일</button>
+        <button onClick={handleSetDurationMonth}>1개월</button>
+        <button onClick={handleSetDurationYear}>1년</button>
       </div>
     </div>
   )
