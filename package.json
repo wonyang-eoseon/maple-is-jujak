@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@stylexjs/stylex": "^0.4.1",
+    "dayjs": "^1.11.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.21.1",
