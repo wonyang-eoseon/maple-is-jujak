@@ -1,5 +1,5 @@
 import * as stylex from '@stylexjs/stylex'
-import { Input } from './Input'
+import { Input } from './input'
 
 const styles = stylex.create({
   base: {
@@ -17,7 +17,7 @@ const DatePicker = ({
   label: string
   id: string
   value?: string
-  onChange?: (event: any) => void
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
 }) => {
   return (
     <div {...stylex.props(styles.base)}>

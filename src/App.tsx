@@ -1,4 +1,4 @@
-import DateFilter from './components/DateFilter'
+import DateFilter from './components/date-filter'
 
 export default function App() {
   return (
