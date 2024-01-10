@@ -2,8 +2,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "target": "ES2015", // 타입스크립트 파일을 컴파일 했을 때 빌드 디렉토리에 생성되는 자바스크립트의 버전
-    "lib": ["ES2020", "DOM", "DOM.Iterable"], // 타입스크립트 파일을 자바스크립트로 컴파일할 때 포함될 라이브러리의 목록
-    "module": "ESNext", // 생성될 모듈 코드 설정
+    "lib": ["dom", "dom.iterable", "esnext"], // 타입스크립트 파일을 자바스크립트로 컴파일할 때 포함될 라이브러리의 목록
+    "module": "esnext", // 생성될 모듈 코드 설정
     "allowJs": true, // JS 파일 허용
     "skipLibCheck": true, // 선언 파일 유형 검사 스킵
     "esModuleInterop": true, // CommonJS 모듈과의 상호 운용성 향상
