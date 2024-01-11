@@ -1,4 +1,5 @@
-import * as React from 'react'
+import { forwardRef } from 'react'
+import type { ButtonHTMLAttributes } from 'react'
 import * as stylex from '@stylexjs/stylex'
 
 const styles = stylex.create({
@@ -18,10 +19,9 @@ const styles = stylex.create({
   },
 })
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ ...props }, ref) => {
     return <button {...stylex.props(styles.base)} ref={ref} {...props} />
   },

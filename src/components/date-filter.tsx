@@ -1,6 +1,7 @@
 import { useReducer } from 'react'
+import dayjs from 'dayjs'
+import type { Dayjs } from 'dayjs'
 import * as stylex from '@stylexjs/stylex'
-import dayjs, { Dayjs } from 'dayjs'
 
 import { Button } from './ui/button'
 import { DatePicker } from './ui/date-picker'

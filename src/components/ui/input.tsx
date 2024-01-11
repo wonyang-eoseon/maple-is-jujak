@@ -1,4 +1,4 @@
-import React from 'react'
+import { InputHTMLAttributes, forwardRef } from 'react'
 import * as stylex from '@stylexjs/stylex'
 
 const styles = stylex.create({
@@ -12,10 +12,9 @@ const styles = stylex.create({
   },
 })
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {}
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {}
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
+const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ type = 'text', ...props }, ref) => {
     return (
       <input type={type} {...stylex.props(styles.base)} ref={ref} {...props} />
